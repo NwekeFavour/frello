@@ -1,0 +1,25 @@
+body{
+  background-color: #E0E0E0;
+}
+
+.loginsect{
+  width: 350px;
+  height: 384px;
+}
+
+.img{
+  opacity: 10%;
+}
+
+@media screen and (min-width:769px) {
+  .loginimage{
+    position: absolute;
+    right: 0 !important;
+  }
+}
+
+@media screen and (max-width:769px) {
+  .loginimage img{
+    display: none;
+  }
+}
