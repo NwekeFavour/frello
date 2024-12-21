@@ -7,18 +7,19 @@ import Loader from '../component/loginPreloader'
 import { doc, setDoc } from 'firebase/firestore';
 import { toast, ToastContainer } from 'react-toastify';
 import '../../node_modules/react-toastify/dist/ReactToastify.css'
-
+import { useNavigate } from 'react-router-dom';
 function Register() {
     const [ email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [ Lastname, setFname] = useState("")
     const [Firstname, setLname] = useState("")
     const [loading, setLoader] = useState(false)
-    
+    const navigate = useNavigate();
     const handleRegister = async (e) => {
         e.preventDefault();
 
         try {
+            setLoader(true)
                 
             await createUserWithEmailAndPassword(auth, email, password)
             const user = auth.currentUser;
@@ -29,12 +30,19 @@ function Register() {
                     lastname:Lastname
                 })
             }
-            console.log(user);
+            // console.log(user);
             toast.success("User Registered Successfully", 
                 {
-                    position: "top-center"
+                    position: "top-center",
+                    onClose: () => {
+                        setLoader(false)
+                    }
                 }
             )
+            setTimeout(() => {
+            navigate('/')
+
+            }, 4000)
         } catch (error) {
             setLoader(false)
             console.log(error.messsage);
@@ -48,7 +56,7 @@ function Register() {
     }
     return (
         <div className=''>
-            <form onSubmit={handleRegister} className="flex max-w-md md:my-10 my-3 md:w-[70%] mx-auto flex-col gap-4">
+            <form onSubmit={handleRegister} className="flex mx-4 max-w-md md:my-10 my-3 md:w-[70%] md:mx-auto flex-col gap-4">
                 <div>
                     <p className="m-0 text-start text-black md:text-[30px]">Register</p>
                 </div>

@@ -1,9 +1,9 @@
 import './App.css'
-import { BrowserRouter as Router, Route, Routes  } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import ProtectedRoute from './ProtectedRoute'
 import Login from './pages/login'
 import Register from './pages/register'
-// import Home from './pages/home'
-
+import Home from './pages/home'
 function App() {
 
   return (
@@ -32,8 +32,12 @@ function App() {
             path='/login'
             Component={Login}
             ></Route>
-            {/* <Route exact path='/' Component={Home}>
-            </Route> */}
+            <Route exact path='/home' element={
+              <ProtectedRoute>
+                <Home/>
+              </ProtectedRoute>
+            }>
+            </Route>
             <Route
             path='/register'
             Component={Register}
