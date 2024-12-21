@@ -1,25 +1,29 @@
-body{
-  background-color: #E0E0E0;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: #e0e0e0;
 }
 
-.loginsect{
+.loginsect {
   width: 350px;
   height: 384px;
 }
 
-.img{
+.img {
   opacity: 10%;
 }
 
-@media screen and (min-width:769px) {
-  .loginimage{
+@media screen and (min-width: 769px) {
+  .loginimage {
     position: absolute;
     right: 0 !important;
   }
 }
 
-@media screen and (max-width:769px) {
-  .loginimage img{
+@media screen and (max-width: 769px) {
+  .loginimage img {
     display: none;
   }
 }

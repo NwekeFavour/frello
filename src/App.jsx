@@ -1,7 +1,7 @@
 import './App.css'
 import { BrowserRouter as Router, Route, Routes  } from 'react-router-dom'
 import Login from './pages/login'
-// import Register from './pages/register'
+import Register from './pages/register'
 // import Home from './pages/home'
 
 function App() {
@@ -23,15 +23,21 @@ function App() {
           {/* </ul> */}
           <Routes>
             <Route
+              exact
+              path='/'
+              Component={Login}
+            ></Route>
+            <Route
+            exact
             path='/login'
             Component={Login}
             ></Route>
             {/* <Route exact path='/' Component={Home}>
             </Route> */}
-            {/* <Route
+            <Route
             path='/register'
             Component={Register}
-            ></Route> */}
+            ></Route>
           </Routes>
         </div>
       </Router>
